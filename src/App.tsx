@@ -1,24 +1,44 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./style/_main.scss"
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <section id={"object"}>
+        <div className="face front"/>
+        <div className="face back"/>
+        <div className="face top"/>
+        <div className="face bottom"/>
+        <div className="face left"/>
+        <div className="face right"/>
+
+        <section className={"keys"}>
+          <div className="key front-key"/>
+          <div className="key back-key"/>
+          <div className="key top-key"/>
+          <div className="key bottom-key"/>
+          <div className="key left-key"/>
+          <div className="key right-key"/>
+        </section>
+
+        <section className={"keys"}>
+          <div className="key3 front-key"/>
+          <div className="key3 back-key"/>
+          <div className="key3 top-key"/>
+          <div className="key3 bottom-key"/>
+          <div className="key3 left-key"/>
+          <div className="key3 right-key"/>
+        </section>
+
+        <section className={"keys"}>
+          <div className="key2 front-key"/>
+          <div className="key2 back-key"/>
+          <div className="key2 top-key"/>
+          <div className="key2 bottom-key"/>
+          <div className="key2 left-key"/>
+          <div className="key2 right-key"/>
+        </section>
+      </section>
     </div>
   );
 }
