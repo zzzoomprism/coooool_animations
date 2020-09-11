@@ -1,75 +1,11 @@
 @import "variables";
-
-
-@mixin cube($width, $height, $darkColor, $lightColor, $middleColor){
-  &.front{
-    @include cube-front($width, $height, $middleColor);
-  }
-  &.back{
-    @include cube-back($width, $height, $darkColor);
-  }
-  &.right{
-    @include cube-right($width, $height, $darkColor);
-  }
-  &.left{
-    @include cube-left($width, $height, $darkColor);
-  }
-  &.top{
-    @include cube-top($width, $height, $lightColor);
-  }
- &.bottom{
-   @include cube-bottom($width, $height, $darkColor);
- }
-}
-
-@mixin cube-front($width, $height, $color){
-  width: $width;
-  height: $height;
-  background-color: $color;
-  transform: translateZ(-$height / 2);
-}
-
-@mixin cube-back($width, $height, $color){
-  width: $width;
-  height: $height;
-  background-color: $color;
-  transform: rotateY(180deg) translateZ($height / 2);
-}
-
-@mixin cube-top($width, $height, $color){
-  width: $width;
-  height: $height;
-  background-color: $color;
-  transform:rotateX(90deg) translateZ($height / 2);
-}
-
-@mixin cube-bottom($width, $height, $color){
-  width: $width;
-  height: $height;
-  background-color: rgba(0,0,0,.0);
-  transform:rotateX(-90deg) translateZ($height / 2);
-}
-
-@mixin cube-left($width, $height, $color){
-  width: $height;
-  height: $height;
-  background-color: $color;
-  transform: rotateY(-90deg) translateZ($width / 2);
-}
-
-@mixin cube-right($width, $height, $color){
-  width: $height;
-  height: $height;
-  background-color: $color;
-  transform: rotateY(90deg) translateZ($mainWidth - 50px);
-}
-
+@import "./mixins";
 
 #object {
   width: $mainWidth;
   height: $mainHeight;
   transform-style: preserve-3d;
-  transform: rotate3d(1, 1, 0, 30deg);
+  transform: rotate3d(1, 1, 0, -30deg);
 }
 
 .face {
@@ -78,118 +14,72 @@
   height: 100%;
   position: absolute;
   color: white;
-  @include cube($mainWidth, $mainHeight, $cubeFrontColor, $cubeTopColor, $cubeRightColor)
+  @include cube(
+    $mainWidth,
+    $mainHeight,
+    50px,
+    $cubeFrontColor,
+    $cubeTopColor,
+    $cubeRightColor
+  );
 }
 
-.side {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: $mainHeight;
-  height: 100%;
-  position: absolute;
-  backface-visibility: inherit;
-  color: white;
-}
-//
-//.front {
-//  background-color: $cubeFrontColor;
-//  transform: translateZ(-$mainHeight / 2);
-//}
-//
-//.back {
-//  background-color: $cubeBackColor;
-//  transform: rotateY(180deg) translateZ($mainHeight / 2);
-//}
-//
-//.top {
-//  background-color: $cubeTopColor;
-//  transform: rotateX(90deg) translateZ($mainHeight / 2);
-//}
-//
-//.bottom {
-//  background-color: $cubeBottomColor;
-//  transform: rotateX(-90deg) translateZ($mainHeight / 2);
-//}
-//
-//.left {
-//  background-color: $cubeLeftColor;
-//  transform: rotateY(-90deg) translateZ($mainWidth / 2);
-//}
-//
-//.right {
-//  width: $mainHeight;
-//  background-color: $cubeRightColor;
-//  transform: rotateY(90deg) translateZ($mainWidth - 50px);
-//}
-
-
-.keys {
+.speakers {
   width: $btnWidth;
   height: $btnHeight;
   transform-style: preserve-3d;
   transform: translateZ(20px);
 }
 
-.key {
+.speaker {
   display: grid;
-  width: 100%;
-  height: 100%;
+  width: $btnWidth;
+  height: $btnHeight;
   position: absolute;
   top: 60px;
   left: -15px;
+  @include cube(
+    $btnWidth,
+    $btnHeight,
+    10px,
+    $btnFrontColor,
+    $btnTopColor,
+    $btnRightColor
+  );
 }
 
-.key2 {
-  display: grid;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: $mainWidth - 110px;
-  top: 5px;
-}
+// .front-key {
+//   background-color: $btnFrontColor;
+//   transform: rotateY(180deg) translateZ(5px);
+// }
 
-.key3 {
-  display: grid;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 50px;
-  top: 5px;
-}
+// .back-key {
+//   background-color: $btnColor;
+//   transform: translateZ(5px);
+// }
 
-.front-key {
-  background-color: $btnFrontColor;
-  transform: rotateY(180deg) translateZ(5px);
-}
+// .top-key {
+//   width: 100%;
+//   height: 10px;
+//   background-color: $btnTopColor;
+//   transform: rotateX(90deg) translateZ(5px);
+// }
 
-.back-key {
-  background-color: $btnColor;
-  transform: translateZ(5px);
-}
+// .bottom-key {
+//   width: 100%;
+//   height: 10px;
+//   background-color: $btnColor;
+//   transform: rotateX(-90deg) translateZ(5px);
+// }
 
-.top-key {
-  width: 100%;
-  height: 10px;
-  background-color: $btnTopColor;
-  transform: rotateX(90deg) translateZ(5px);
-}
+// .left-key {
+//   background-color: $btnColor;
+//   transform: rotateY(-90deg) translateZ(5px);
+// }
 
-.bottom-key {
-  width: 100%;
-  height: 10px;
-  background-color: $btnColor;
-  transform: rotateX(-90deg) translateZ(5px);
-}
-
-.left-key {
-  background-color: $btnColor;
-  transform: rotateY(-90deg) translateZ(5px);
-}
-
-.right-key {
-  width: 10px;
-  height: 100%;
-  background-color: $btnRightColor;
-  transform: rotateY(90deg) translateZ(50px);
-}
+// .right-key {
+//   width: 10px;
+//   height: 100%;
+//   background-color: $btnRightColor;
+//   transform: rotateY(90deg) translateZ(50px);
+// }

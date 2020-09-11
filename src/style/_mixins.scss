@@ -1,0 +1,62 @@
+@mixin cube($width, $height, $depth, $darkColor, $lightColor, $middleColor) {
+  &.side__front {
+    @include cube-front($width, $height, $depth, $middleColor);
+  }
+  &.side__back {
+    @include cube-back($width, $height, $depth, $darkColor);
+  }
+  &.side__right {
+    @include cube-right($width, $height, $depth, $darkColor);
+  }
+  &.side__left {
+    @include cube-left($width, $height, $depth, $darkColor);
+  }
+  &.side__top {
+    @include cube-top($width, $height, $depth, $lightColor);
+  }
+  &.side__bottom {
+    @include cube-bottom($width, $height, $depth, $darkColor);
+  }
+}
+
+@mixin cube-front($width, $height, $depth, $color) {
+  width: $width;
+  height: $height;
+  background-color: rgba(0, 0, 0, 0.3);
+  transform: translateZ($depth);
+}
+
+@mixin cube-back($width, $height, $depth, $color) {
+  width: $width;
+  height: $height;
+  background-color: rgba(0, 0, 0, 0.2);
+  transform: rotateY(180deg) translateZ($depth);
+}
+
+@mixin cube-top($width, $height, $depth, $color) {
+  width: $width;
+  height: $depth * 2;
+  background-color: $color;
+  transform: rotateX(90deg) translateZ(calc(#{$depth}));
+}
+
+@mixin cube-bottom($width, $height, $depth, $color) {
+  width: $width;
+  height: $depth * 2;
+  background-color: $color;
+  transform: rotateX(-90deg) translateZ($depth);
+}
+
+@mixin cube-left($width, $height, $depth, $color) {
+  width: $depth;
+  height: $height;
+  background-color: rgba(0, 0, 0, 0);
+  transform: rotateY(-90deg) translateZ($width - $depth);
+}
+
+@mixin cube-right($width, $height, $depth, $color) {
+  width: $depth * 2;
+  height: $height;
+  background-color: $color;
+  transform: rotateY(90deg) translateZ($width - $depth);
+}
