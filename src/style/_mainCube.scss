@@ -1,11 +1,27 @@
 @import "variables";
 @import "./mixins";
+@import "./animation";
 
 #object {
   width: $mainWidth;
   height: $mainHeight;
   transform-style: preserve-3d;
-  transform: rotate3d(1, 1, 0, -30deg);
+  transform: rotate3d(1, 1, 0, -45deg);
+}
+
+.bottom__stand {
+  position: absolute;
+  top: 100px;
+  left: 4px;
+  transform-style: preserve-3d;
+  transform: translateZ(-10px);
+}
+
+.bottom__stand_cube {
+  width: calc(#{$mainWidth} - 20px);
+  height: 15px;
+  position: absolute;
+  @include cube(260px, 15px, 50px, $mainObjectColor);
 }
 
 .face {
@@ -14,72 +30,210 @@
   height: 100%;
   position: absolute;
   color: white;
+  @include cube($mainWidth, $mainHeight, 50px, $mainObjectColor);
+}
+
+.radio__device {
+  width: $mainWidth;
+  height: calc(#{$mainHeight} + 70px);
+  position: absolute;
+  top: -40px;
+  transform-style: preserve-3d;
+  transform: translateZ(-62px);
+}
+
+.radio {
+  display: grid;
+  width: $mainWidth;
+  height: calc(#{$mainHeight} + 40px);
+  position: absolute;
   @include cube(
     $mainWidth,
-    $mainHeight,
-    50px,
-    $cubeFrontColor,
-    $cubeTopColor,
-    $cubeRightColor
+    calc(#{$mainHeight} + 40px),
+    10px,
+    $mainObjectColor
   );
 }
 
-.speakers {
-  width: $btnWidth;
-  height: $btnHeight;
+.radio__line {
+  display: grid;
+  justify-self: center;
+  margin-top: 5px;
+  box-shadow: -4px 3px 8px -7px #165d72d8 inset,
+    -2px 3px 4px -4px #165d72d8 inset, 2px -4px 7px -6px #ebebebce inset,
+    2px -4px 4px -4px #ebebebce inset;
+  border-radius: 3px;
+  width: 250px;
+  height: 30px;
+}
+
+.radio__line_white {
+  width: 95%;
+  height: 2px;
+  display: grid;
+  position: relative;
+  justify-self: center;
+  align-self: center;
+  background-color: #ebebebce;
+}
+.radio__line_block {
+  width: 4px;
+  height: 15px;
+  background-color: #5454b3;
+  border-radius: 2px;
+  position: absolute;
+  top: -7px;
+  left: 85%;
+  animation: radio__line_block_animation 7s infinite alternate;
+}
+
+@keyframes radio__line_block_animation {
+  0%,
+  15% {
+    left: 85%;
+  }
+  45%,
+  60%,
+  62%,
+  68% {
+    left: 45%;
+  }
+  20%,
+  40%,
+  64% {
+    left: 60%;
+  }
+  58%,
+  70%,
+  100% {
+    left: 15%;
+  }
+}
+
+.speaker__left {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  width: $cassWidth;
+  height: $cassHeight;
   transform-style: preserve-3d;
-  transform: translateZ(20px);
+  transform: translateZ(60px);
+}
+
+.speaker__right {
+  position: absolute;
+  top: 10px;
+  left: calc(#{$mainWidth} - #{$cassWidth} - 20px);
+  width: $cassWidth;
+  height: $cassHeight;
+  transform-style: preserve-3d;
+  transform: translateZ(60px);
 }
 
 .speaker {
   display: grid;
-  width: $btnWidth;
-  height: $btnHeight;
+  width: $cassWidth;
+  height: $cassHeight;
   position: absolute;
-  top: 60px;
-  left: -15px;
-  @include cube(
-    $btnWidth,
-    $btnHeight,
-    10px,
-    $btnFrontColor,
-    $btnTopColor,
-    $btnRightColor
-  );
+
+  @include cube($cassWidth, $cassHeight, 4px, $cassColor);
 }
 
-// .front-key {
-//   background-color: $btnFrontColor;
-//   transform: rotateY(180deg) translateZ(5px);
-// }
+.cassette_device {
+  position: absolute;
+  top: 10px;
+  left: 100px;
+  transform-style: preserve-3d;
+  transform: translateZ(60px);
+}
 
-// .back-key {
-//   background-color: $btnColor;
-//   transform: translateZ(5px);
-// }
+.cassette {
+  width: $cassWidth;
+  height: $cassHeight;
+  position: absolute;
+  @include cube($cassWidth, 40px, 2px, $cassColor);
+}
 
-// .top-key {
-//   width: 100%;
-//   height: 10px;
-//   background-color: $btnTopColor;
-//   transform: rotateX(90deg) translateZ(5px);
-// }
+@for $btn from 0 through 5 {
+  .small_button__#{$btn} {
+    position: absolute;
+    width: $smallButton;
+    top: 60px;
+    left: calc((#{$btn} * (#{$smallButton} + 2px)) + 95px);
+    transform-style: preserve-3d;
+    transform: translateZ(56px);
+  }
+}
 
-// .bottom-key {
-//   width: 100%;
-//   height: 10px;
-//   background-color: $btnColor;
-//   transform: rotateX(-90deg) translateZ(5px);
-// }
+@for $btn from 1 through 6 {
+  .top_button__#{$btn} {
+    position: absolute;
+    width: $smallButton;
+    top: -20px;
+    left: calc((#{$btn} * (#{$smallButton} + 2px)) + 20px);
+    transform-style: preserve-3d;
+    transform: translateZ(40px);
+  }
+}
 
-// .left-key {
-//   background-color: $btnColor;
-//   transform: rotateY(-90deg) translateZ(5px);
-// }
+.button_yellow {
+  position: absolute;
+  @include cube($smallButton, $smallButton, 5px, $smallButtonFrontColor);
+}
 
-// .right-key {
-//   width: 10px;
-//   height: 100%;
-//   background-color: $btnRightColor;
-//   transform: rotateY(90deg) translateZ(50px);
-// }
+.button_white {
+  position: absolute;
+  @include cube($smallButton, $smallButton, 5px, $cassColor);
+}
+
+.button_blue {
+  width: $smallButton;
+  height: $smallButton;
+  position: absolute;
+  top: 5px;
+  @include cube($smallButton, 8px, 5px, #5454b3);
+}
+
+@for $i from 0 through 12 {
+  .ml-#{$i} {
+    left: calc(20px * #{$i});
+  }
+}
+
+.handle_right {
+  position: absolute;
+  top: -40px;
+  transform-style: preserve-3d;
+  transform: translateZ(-112px) translateY(-80px) translateX(280px)
+    rotateX(20deg);
+}
+
+.handle_left {
+  position: absolute;
+  top: -40px;
+  transform-style: preserve-3d;
+  transform: translateZ(-102px) translateY(-83px) translateX(-5px)
+    rotateX(20deg);
+}
+
+.handle_top {
+  position: absolute;
+  top: -140px;
+  transform-style: preserve-3d;
+  transform: translateZ(-102px) translateY(11px) translateX(-4px) rotateX(20deg)
+    rotateY(2deg) rotateZ(0deg);
+}
+
+.handle_side__top {
+  width: 280px;
+  height: 5px;
+  position: absolute;
+  @include cube(291px, 5px, 8px, #5454b3);
+}
+
+.handle {
+  width: 5px;
+  height: 150px;
+  position: absolute;
+  @include cube(5px, 150px, 8px, #5454b3);
+}

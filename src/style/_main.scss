@@ -1,6 +1,136 @@
-@import "mainCube";
+@import "./mainCube";
+@import "./shadows";
+@import "./fonts";
+@import "./variables";
 
 body {
+  overflow: hidden;
+  height: 100vh;
   padding: 50px;
   background-color: #f498ad;
+  background: linear-gradient(
+    120deg,
+    lighten(#ffe46a, 5),
+    #f498ad,
+    darken(#f498ad, 8)
+  );
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+button {
+  font-family: "Amatic SC", cursive;
+  color: $secondary;
+  font-size: 2.2rem;
+}
+
+.fade-enter {
+  opacity: 0.01;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0.01;
+  transition: opacity 2000ms ease-in;
+}
+
+.my-node-enter {
+  opacity: 0;
+}
+.my-node-enter-active {
+  opacity: 1;
+  transition: opacity 2000ms;
+}
+.my-node-exit {
+  opacity: 1;
+}
+.my-node-exit-active {
+  opacity: 0;
+  transition: opacity 2000ms;
+}
+
+.btn-animation-enter {
+  opacity: 0;
+  transform: translate(0, 30px);
+}
+.btn-animation-enter-active {
+  opacity: 1;
+  transform: translate(0, 0);
+  transition: opacity 1000ms, transform 1000ms;
+}
+.btn-animation-exit {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+.btn-animation-exit-active {
+  opacity: 0;
+  transform: translate(0, 30px);
+  transition: opacity 1000ms, transform 1000ms;
+}
+
+.record_player__block {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.block__buttons {
+  width: 100%;
+  height: 150px;
+  display: grid;
+  justify-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  min-width: 150px;
+  width: 280px;
+  cursor: pointer;
+  padding: 10px 20px;
+  border: none;
+  border-style: none;
+  background-color: transparent;
+  transition: 0.3s;
+}
+
+button:focus {
+  border: none;
+  border-style: none;
+  outline: none;
+}
+
+button:hover {
+  color: $primary;
+  animation: button_hover_animation 0.2s infinite ease;
+}
+
+.animation__block {
+  width: 100%;
+  height: 100vh;
+}
+
+@keyframes button_hover_animation {
+  from {
+    transform: rotate(-1deg);
+  }
+  to {
+    transform: rotate(1deg);
+  }
 }

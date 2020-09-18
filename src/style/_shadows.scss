@@ -1,0 +1,40 @@
+.shadow__main {
+  position: absolute;
+  top: 10px;
+  transform-style: preserve-3d;
+  transform: rotateX(90deg) translateZ(-10px) translateY(-60px)
+    translateX(-10px);
+}
+
+.shadow__cassette {
+  position: absolute;
+  top: 75px;
+  left: 102px;
+  transform-style: preserve-3d;
+  transform: translateZ(50px) translateY(-60px) translateX(-10px);
+}
+
+.shadow__speaker_left {
+  position: absolute;
+  top: 75px;
+  left: 20px;
+  transform-style: preserve-3d;
+  transform: translateZ(50px) translateY(-60px) translateX(-10px);
+}
+
+.shadow__speaker_right {
+  position: absolute;
+  top: 75px;
+  left: 198px;
+  transform-style: preserve-3d;
+  transform: translateZ(50px) translateY(-60px) translateX(-10px);
+}
+
+.shadow__button_top {
+  position: absolute;
+  top: 20px;
+  color: #33333352;
+  left: 198px;
+  transform-style: preserve-3d;
+  transform: rotateX(90deg) translateZ(60px) translateY(0px) translateX(-200px);
+}

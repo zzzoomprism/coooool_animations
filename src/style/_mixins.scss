@@ -1,62 +1,105 @@
-@mixin cube($width, $height, $depth, $darkColor, $lightColor, $middleColor) {
+@mixin cube($width, $height, $depth, $color) {
   &.side__front {
-    @include cube-front($width, $height, $depth, $middleColor);
+    @include cube-front($width, $height, $depth, $color);
   }
   &.side__back {
-    @include cube-back($width, $height, $depth, $darkColor);
+    @include cube-back($width, $height, $depth, $color);
   }
   &.side__right {
-    @include cube-right($width, $height, $depth, $darkColor);
+    @include cube-right($width, $height, $depth, $color);
   }
   &.side__left {
-    @include cube-left($width, $height, $depth, $darkColor);
+    @include cube-left($width, $height, $depth, $color);
   }
   &.side__top {
-    @include cube-top($width, $height, $depth, $lightColor);
+    @include cube-top($width, $height, $depth, $color);
   }
   &.side__bottom {
-    @include cube-bottom($width, $height, $depth, $darkColor);
+    @include cube-bottom($width, $height, $depth, $color);
   }
 }
 
 @mixin cube-front($width, $height, $depth, $color) {
   width: $width;
   height: $height;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: darken($color, 2%);
   transform: translateZ($depth);
 }
 
 @mixin cube-back($width, $height, $depth, $color) {
   width: $width;
   height: $height;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: darken($color, 2%);
   transform: rotateY(180deg) translateZ($depth);
 }
 
 @mixin cube-top($width, $height, $depth, $color) {
   width: $width;
   height: $depth * 2;
-  background-color: $color;
-  transform: rotateX(90deg) translateZ(calc(#{$depth}));
+  background: lighten($color, 20%);
+  transform: rotateX(90deg) translateZ($depth);
 }
 
 @mixin cube-bottom($width, $height, $depth, $color) {
   width: $width;
   height: $depth * 2;
-  background-color: $color;
-  transform: rotateX(-90deg) translateZ($depth);
+  background-color: darken($color, 10%);
+  transform: rotateX(-90deg) translateZ($height - $depth);
 }
 
 @mixin cube-left($width, $height, $depth, $color) {
-  width: $depth;
+  width: $depth * 2;
   height: $height;
-  background-color: rgba(0, 0, 0, 0);
-  transform: rotateY(-90deg) translateZ($width - $depth);
+  background-color: lighten($color, 60%);
+  transform: rotateY(-90deg) translateZ($depth);
 }
 
 @mixin cube-right($width, $height, $depth, $color) {
   width: $depth * 2;
   height: $height;
-  background-color: $color;
+  background-color: darken($color, 10%);
   transform: rotateY(90deg) translateZ($width - $depth);
+}
+
+@mixin cubeAnimation($animation, $time, $side) {
+  animation: #{$animation} #{$time} infinite ease;
+
+  @keyframes #{$animation} {
+    0%,
+    15%,
+    45%,
+    60%,
+    62%,
+    68% {
+      @if $side == "cube-front" {
+        @include cube-front($smallButton, $smallButton, $smallButton);
+      } @else if $side == "cube-back" {
+        @include cube-back($smallButton, $smallButton, $smallButton);
+      } @else if $side == "cube-right" {
+        @include cube-right($smallButton, $smallButton, $smallButton);
+      } @else if $side == "cube-left" {
+        @include cube-left($smallButton, $smallButton, $smallButton);
+      } @else if $side == "cube-top" {
+        @include cube-top($smallButton, $smallButton, $smallButton);
+      }
+    }
+    20%,
+    40%,
+    58%,
+    64%,
+    70%,
+    100% {
+      @if $side == "side__front" {
+        @include cube-front(10px, 10px, 10px, $smallButtonFrontColor);
+      } @else if $side == "side__back" {
+        @include cube-back(10px, 10px, 10px, $smallButtonFrontColor);
+      } @else if $side == "side__right" {
+        @include cube-right(10px, 10px, 10px, $smallButtonFrontColor);
+      } @else if $side == "side__left" {
+        @include cube-left(10px, 10px, 10px, $smallButtonFrontColor);
+      } @else if $side == "side__top" {
+        @include cube-top(10px, 10px, 10px, $smallButtonFrontColor);
+      }
+    }
+  }
 }

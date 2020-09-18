@@ -1,0 +1,158 @@
+.btn__front {
+  animation: btn__front_animation 5s infinite alternate;
+}
+@keyframes btn__front_animation {
+  0%,
+  15%,
+  45%,
+  60%,
+  62%,
+  68% {
+    @include cube-front(
+      $smallButton,
+      $smallButton,
+      5px,
+      $smallButtonFrontColor
+    );
+    top: 0;
+  }
+  20%,
+  40%,
+  58%,
+  64%,
+  70%,
+  100% {
+    @include cube-front($smallButton, 4px, 5px, $smallButtonFrontColor);
+    top: 8px;
+  }
+}
+
+.btn__back {
+  animation: btn__back_animation 5s infinite alternate;
+}
+@keyframes btn__back_animation {
+  0%,
+  15%,
+  45%,
+  60%,
+  62%,
+  68% {
+    @include cube-back($smallButton, $smallButton, 5px, $smallButtonFrontColor);
+    top: 0;
+  }
+  20%,
+  40%,
+  58%,
+  64%,
+  70%,
+  100% {
+    @include cube-back($smallButton, 4px, 5px, $smallButtonFrontColor);
+    top: 8px;
+  }
+}
+
+.btn__right {
+  animation: btn__right_animation 5s infinite alternate;
+}
+@keyframes btn__right_animation {
+  0%,
+  15%,
+  45%,
+  60%,
+  62%,
+  68% {
+    @include cube-right(
+      $smallButton,
+      $smallButton,
+      5px,
+      $smallButtonFrontColor
+    );
+    top: 0;
+  }
+  20%,
+  40%,
+  58%,
+  64%,
+  70%,
+  100% {
+    @include cube-right($smallButton, 4px, 5px, $smallButtonFrontColor);
+    top: 8px;
+  }
+}
+
+.btn__left {
+  animation: btn__left_animation 5s infinite alternate;
+}
+@keyframes btn__left_animation {
+  0%,
+  15%,
+  45%,
+  60%,
+  62%,
+  68% {
+    @include cube-left($smallButton, $smallButton, 5px, $smallButtonFrontColor);
+    top: 0;
+  }
+  20%,
+  40%,
+  58%,
+  64%,
+  70%,
+  100% {
+    @include cube-left($smallButton, 4px, 5px, $smallButtonFrontColor);
+    top: 8px;
+  }
+}
+
+.btn__top {
+  animation: btn__top_animation 5s infinite alternate;
+}
+@keyframes btn__top_animation {
+  0%,
+  15%,
+  45%,
+  60%,
+  62%,
+  68% {
+    @include cube-top($smallButton, $smallButton, 5px, $smallButtonFrontColor);
+    top: 0;
+  }
+  20%,
+  40%,
+  58%,
+  64%,
+  70%,
+  100% {
+    @include cube-top($smallButton, $smallButton, 5px, $smallButtonFrontColor);
+    top: 8px;
+  }
+}
+
+.btn__bottom {
+  animation: btn__bottom_animation 5s infinite alternate;
+}
+@keyframes btn__bottom_animation {
+  0%,
+  15%,
+  45%,
+  60%,
+  62%,
+  68% {
+    @include cube-bottom(
+      $smallButton,
+      $smallButton,
+      5px,
+      $smallButtonFrontColor
+    );
+    top: 0;
+  }
+  20%,
+  40%,
+  58%,
+  64%,
+  70%,
+  100% {
+    @include cube-bottom($smallButton, 5px, 5px, $smallButtonFrontColor);
+    top: 8px;
+  }
+}
