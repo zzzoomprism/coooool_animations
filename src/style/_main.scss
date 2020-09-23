@@ -3,10 +3,18 @@
 @import "./fonts";
 @import "./variables";
 
+*,
+::before,
+::after,
+#root,
 body {
+  margin: 0;
+  padding: 0;
+}
+
+.home__page {
   overflow: hidden;
   height: 100vh;
-  padding: 50px;
   background-color: #f498ad;
   background: linear-gradient(
     120deg,
@@ -25,6 +33,18 @@ button {
   font-family: "Amatic SC", cursive;
   color: $secondary;
   font-size: 2.2rem;
+  padding: 0 20px;
+}
+
+p {
+  font-family: "Amatic SC", cursive;
+  color: $secondary;
+  font-size: 1.8rem;
+}
+
+p span {
+  padding: 10px;
+  margin: 10px;
 }
 
 .fade-enter {
@@ -122,8 +142,144 @@ button:hover {
 }
 
 .animation__block {
+  position: relative;
   width: 100%;
   height: 100vh;
+  overflow: hidden;
+}
+
+.background_animation {
+  overflow: hidden;
+  display: inline;
+}
+.background_animation::after {
+  content: "";
+  width: 100%;
+  height: 100vh;
+  background: url("../media/rain.png");
+  background-position: 0% 0%;
+  transform: scale(-1, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  animation: rain_animation 0.4s linear infinite;
+}
+
+.background_animation_item__text {
+  position: absolute;
+  width: 600px;
+  text-align: center;
+  top: 19%;
+  color: white;
+  font-size: 50px;
+}
+.background_image {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+}
+
+.svg__object {
+  position: absolute;
+  width: 100px;
+  height: 200px;
+  top: 60%;
+  left: 80px;
+  transform: scale(1.2, 1.2);
+}
+
+.svg__object_back {
+  position: absolute;
+  width: 100px;
+  height: 200px;
+  top: 60%;
+  left: 160px;
+  transform: scale(-1.2, 1.2);
+}
+
+.little_help {
+  width: 200px;
+  height: 80px;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 3;
+}
+
+.rotate {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: rotate(15deg);
+}
+.right_foot,
+.left_foot {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: rotate(-25deg) translate(50px, 25px);
+}
+.right_shoes,
+.left_shoes {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: rotate(-15deg) translate(110px, 30px);
+}
+
+.left__rotate_active {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: rotate(-25deg) translate(50px, 25px);
+  animation: foots_animation 0.5s infinite alternate;
+}
+
+.right__rotate_active {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: rotate(-25deg) translate(50px, 25px);
+  animation: foots_animation 0.5s infinite alternate;
+  animation-delay: 0.5s;
+}
+
+.right__shoes_rotate_active {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: rotate(-15deg) translate(110px, 30px);
+  animation: right__shoes_animation 0.5s infinite alternate;
+  animation-delay: 0.5s;
+}
+
+.left__shoes_rotate_active {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: rotate(-15deg) translate(110px, 30px);
+  animation: right__shoes_animation 0.5s infinite alternate;
+  animation-delay: 0.2;
+}
+
+@keyframes foots_animation {
+  0% {
+    transform: rotate(-25deg) translate(50px, 25px);
+  }
+  20% {
+    transform: rotate(-60deg) translate(80px, 25px);
+  }
+  100% {
+    transform: rotate(0deg) translate(0px, 0px);
+  }
+}
+
+@keyframes right__shoes_animation {
+  0% {
+    transform: rotate(-15deg) translate(110px, 30px);
+  }
+  20% {
+    transform: rotate(-30deg) translate(190px, 30px);
+  }
+  100% {
+    transform: rotate(0deg) translate(0px, 0px);
+  }
 }
 
 @keyframes button_hover_animation {
@@ -132,5 +288,14 @@ button:hover {
   }
   to {
     transform: rotate(1deg);
+  }
+}
+
+@keyframes rain_animation {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 20% 100%;
   }
 }

@@ -15,7 +15,7 @@ const Content = withRouter(({ location }) => {
       >
         <Switch location={location}>
           <Route exact path="/" component={Home} />
-          <Route path="/animation" component={Animation} />
+          <Route exact path="/animation" component={Animation} />
         </Switch>
       </CSSTransition>
     </TransitionGroup>

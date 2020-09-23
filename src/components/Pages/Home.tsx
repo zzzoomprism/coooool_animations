@@ -9,7 +9,7 @@ const Home: React.FC<any> = () => {
     setTimeout(() => setInProp(true), 2000);
   }, []);
   return (
-    <div>
+    <div className={"home__page"}>
       <Buttons />
       <CSSTransition
         in={inProp}
