@@ -9,7 +9,7 @@ const Help: React.FC<PropsType> = React.memo(({ direction, isGo }) => {
   console.log(direction);
   return (
     <div>
-      <h4 className="little_help">Use your arrows or WASD :)</h4>;
+      <h4 className="little_help">Use arrows on your keyboard :)</h4>;
       <div className="arrow_btns">
         <span className="arrow_top_btn">
           <i className="fas fa-long-arrow-alt-up"></i>
