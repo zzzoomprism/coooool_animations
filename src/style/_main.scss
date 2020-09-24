@@ -209,6 +209,46 @@ button:hover {
   z-index: 3;
 }
 
+.arrow_btns {
+  width: 200px;
+  height: 80px;
+  font-size: 1.5rem;
+  position: relative;
+  color: #777;
+  z-index: 3;
+  text-align: center;
+}
+
+.arrow_btns span {
+  width: 30px;
+  height: 30px;
+  border-radius: 2px;
+}
+
+.arrow_top_btn {
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  background-color: #f1f1f16b;
+}
+
+.arrow_right_btn {
+  position: absolute;
+  top: 82px;
+  left: 132px;
+}
+.arrow_left_btn {
+  position: absolute;
+  top: 82px;
+  left: 68px;
+}
+.arrow_bottom_btn {
+  position: absolute;
+  top: 82px;
+  left: 100px;
+  background-color: #f1f1f16b;
+}
+
 .rotate {
   transform-box: fill-box;
   transform-origin: center;
